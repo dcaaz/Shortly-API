@@ -1,4 +1,3 @@
-import { connectionDB } from "../database/db.js";
 import bcrypt from 'bcrypt';
 import {v4 as uuid} from "uuid";
 
@@ -23,8 +22,7 @@ export async function postSignup(req, res) {
 export async function postSignin(req, res) {
     const dataSignin = req.dataUser;
     const token = uuid();
-
-    console.log("CHEGUEI AQUI!!");
+    
     try {
 
         const userId = await connectionDB.query('SELECT id FROM users WHERE email=$1;', [dataSignin.email]);
