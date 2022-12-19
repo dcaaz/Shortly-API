@@ -22,3 +22,36 @@ export async function postUrls(req,res){
         return res.status(500).send('Server not running');
     }
 };
+
+export async function getUrls(req,res){
+
+    try{
+       
+
+    } catch (err){
+        console.log("err getUrls", err.message);
+        return res.status(500).send('Server not running');
+    }
+};
+
+export async function getUrlsOpen(req,res){
+
+    try{
+       
+
+    } catch (err){
+        console.log("err getUrlsOpen", err.message);
+        return res.status(500).send('Server not running');
+    }
+};
+
+export async function deletUrls(req,res){
+
+    try{
+       
+
+    } catch (err){
+        console.log("delet getUrlsOpen", err.message);
+        return res.status(500).send('Server not running');
+    }
+};
