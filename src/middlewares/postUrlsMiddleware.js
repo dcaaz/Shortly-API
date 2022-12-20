@@ -18,10 +18,10 @@ export async function postUrlsValidation(req, res, next) {
         }
 
         const session = await connectionDB.query('SELECT * FROM sessions WHERE token=$1',
-        [token]);
+            [token]);
 
 
-        if (session.rowCount === 0){
+        if (session.rowCount === 0) {
             return res.sendStatus(401);
         }
 

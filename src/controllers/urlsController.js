@@ -76,7 +76,7 @@ export async function getUrlsOpen(req, res) {
                 short_url=$1;`, [shortUrl]);
 
          //redirecionar para url
-        return res.redirect(url.rows[0]); 
+        return res.redirect(url.rows[0].url); 
 
     } catch (err) {
         console.log("err getUrlsOpen", err.message);
@@ -86,11 +86,15 @@ export async function getUrlsOpen(req, res) {
 
 export async function deletUrls(req, res) {
 
+    const {id} = req.params;
+
     try {
 
+        await connectionDB.query('DELETE FROM urls WHERE id=$1', [id]);
+        return res.sendStatus(204);
 
     } catch (err) {
-        console.log("delet getUrlsOpen", err.message);
+        console.log("err deletetUrls", err.message);
         return res.status(500).send('Server not running');
     }
 };
