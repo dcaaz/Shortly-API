@@ -37,7 +37,10 @@ export async function getUrls(req, res) {
         WHERE
             id=$1`, [id]);
 
-        res.send(bodyUrl.rows[0]).status(200);
+        
+        const body = bodyUrl.rows[0]
+
+        res.send(body).status(200);
 
     } catch (err) {
         console.log("err getUrls", err.message);
@@ -55,7 +58,9 @@ export async function getUrlsOpen(req, res) {
         const viewsCounter = await connectionDB.query(`SELECT views_counter FROM urls WHERE short_url=$1;`,
             [shortUrl]);
 
-        const newCounter = Number(viewsCounter.rows[0].visit_count) + 1;
+        const newCounter = Number(viewsCounter.rows[0].views_counter) + 1;
+
+        console.log("newCounter", newCounter);
 
         //atualizar contador
         await connectionDB.query(`

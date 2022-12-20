@@ -8,8 +8,11 @@ import { deletetUrlsValidation } from "../middlewares/deleteUrlsMiddleware.js";
 const routeUrls = Router();
 
 routeUrls.post('/urls/shorten', postUrlsValidation, postUrls);
+
 routeUrls.get('/urls/:id', getUrlsValidation, getUrls);
-routeUrls.get('urls/open/:shortUrl', getUrlsOpenValidation, getUrlsOpen);
+
+routeUrls.get('/urls/open/:shortUrl', getUrlsOpenValidation, getUrlsOpen);
+
 routeUrls.delete('/urls/:id', deletetUrlsValidation, deletUrls);
 
 export default routeUrls;

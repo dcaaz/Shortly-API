@@ -37,3 +37,14 @@ export async function postSignin(req, res) {
         res.status(500).send('Server not running');
     }
 }
+
+export async function getUsers(req, res) {
+    
+    try {
+
+    } catch (err) {
+        console.log("err getUsers", err.message);
+        res.status(500).send('Server not running');
+    }
+}
+

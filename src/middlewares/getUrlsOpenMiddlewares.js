@@ -1,7 +1,6 @@
 import { connectionDB } from "../database/db.js";
 
 export async function getUrlsOpenValidation(req, res, next) {
-
     const { shortUrl } = req.params;
 
     try {
