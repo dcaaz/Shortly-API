@@ -22,21 +22,20 @@ export async function signinValidation(req, res, next) {
         }
 
         const passwordExist = await connectionDB.query('SELECT password FROM users WHERE email=$1;', [dataSignin.email]);
-        
+
         const passwordCrypted = passwordExist.rows[0].password;
 
         const passwordOk = bcrypt.compareSync(dataSignin.password, passwordCrypted);
 
-        if (!passwordOk){
+        if (!passwordOk) {
             return res.sendStatus(401);
         };
+
+        req.dataUser = dataSignin;
+        next();
 
     } catch (err) {
         console.log("err signinValidation", err.message);
         res.status(500).send('Server not running');
     }
-
-    req.dataUser = dataSignin;
-
-    next();
 }

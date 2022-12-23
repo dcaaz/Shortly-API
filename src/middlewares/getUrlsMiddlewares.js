@@ -12,12 +12,11 @@ export async function getUrlsValidation(req, res, next) {
             res.sendStatus(410);
         }
 
+        req.id = id;
+        next();
+
     } catch (err) {
         console.log("err getUrlValidation", err.message);
         res.status(500).send('Server not running');
     }
-
-    req.id = id
-
-    next();
 }

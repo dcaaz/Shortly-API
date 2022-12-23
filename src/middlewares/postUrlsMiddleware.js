@@ -25,13 +25,12 @@ export async function postUrlsValidation(req, res, next) {
             return res.sendStatus(401);
         }
 
+        req.url = url
+        req.dataUser = token;
+        next();
+
     } catch (err) {
-        console.log("err postUrlValidation", err.message);
+        console.log("err postUrlValidation", err);
         res.status(500).send('Server not running');
     }
-
-    req.url = url
-    req.dataUser = token;
-
-    next();
 }

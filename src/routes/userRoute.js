@@ -10,6 +10,6 @@ routeUser.post('/signup', signupValidation, postSignup);
 
 routeUser.post('/signin', signinValidation, postSignin);
 
-routeUser.post('/users/me', getUsersValidation, getUsers);
+routeUser.get('/users/me', getUsersValidation, getUsers);
 
 export default routeUser;

@@ -20,12 +20,11 @@ export async function signupValidation(req, res, next) {
             return res.sendStatus(409);
         }
 
+        req.dataUser = dataSignup;
+        next();
+
     } catch (err) {
         console.log("err signupValidation", err.message);
         res.status(500).send('Server not running');
     }
-
-    req.dataUser = dataSignup;
-
-    next();
 }
