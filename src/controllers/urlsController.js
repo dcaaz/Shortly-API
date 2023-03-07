@@ -20,7 +20,7 @@ export async function postUrls(req, res) {
         const body = await connectionDB.query('SELECT urls.short_url AS "shortUrl" FROM urls WHERE url=$1',
             [url]);
 
-        res.send(body.rows[0]).status(201);
+        return res.send(body.rows[0]).status(201);
 
     } catch (err) {
         console.log("err postUrls", err.message);
@@ -47,7 +47,7 @@ export async function getUrls(req, res) {
 
         const body = bodyUrl.rows[0]
 
-        res.send(body).status(200);
+        return res.send(body).status(200);
 
     } catch (err) {
         console.log("err getUrls", err.message);
@@ -111,9 +111,8 @@ export async function deletUrls(req, res) {
 };
 
 export async function getRanking(req, res) {
-
+    console.log("cheguei");
     try {
-
         const ranking = await connectionDB.query(`
         SELECT us.id, us.name, 
         CASE WHEN COUNT(ur.*) = 0 THEN 0

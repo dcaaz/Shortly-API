@@ -13,3 +13,7 @@ routeUser.post('/signin', signinValidation, postSignin);
 routeUser.get('/users/me', getUsersValidation, getUsers);
 
 export default routeUser;
+
+export function dani(){
+
+}

@@ -16,7 +16,7 @@ export async function postSignup(req, res) {
 
     } catch (err) {
         console.log("err postSignup", err.message);
-        return res.status(500).send('Server not running');
+        return res.status(500).send('Server not running', err.message);
     }
 }
 
@@ -29,11 +29,12 @@ export async function postSignin(req, res) {
         const userId = await connectionDB.query('SELECT id FROM users WHERE email=$1;', [dataSignin.email]);
 
         await connectionDB.query('INSERT INTO sessions (user_id, token) VALUES ($1, $2);', [userId.rows[0].id, token]);
-        return res.sendStatus(200);
+        return res.status(200).send(token);
+        
     }
     catch (err) {
         console.log("err postSignin", err.message);
-        return res.status(500).send('Server not running');
+        return res.status(500).send('Server not running', err.message);
     }
 }
 
@@ -59,7 +60,7 @@ export async function getUsers(req, res) {
 
     } catch (err) {
         console.log("err getUsers", err.message);
-        return res.status(500).send('Server not running');
+        return res.status(500).send('Server not running', err.message);
     }
 }
 
