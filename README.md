@@ -18,3 +18,17 @@ DELETE */urls/:id*
 GET */users/me*
 
 GET */ranking*
+
+## Tecnologias 
+
+As seguintes ferramentas e frameworks foram utilizados na construção do projeto:
+
+- Cors
+- Dotenv
+- Express
+- Joi
+- Pg
+- Bcrypt
+- Nanoid
+- Uuid
+- Postgres
